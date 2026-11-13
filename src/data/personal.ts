@@ -23,9 +23,8 @@ export const personal: PersonalInfo = {
   //   resumeUrl: `${import.meta.env.BASE_URL}resume.pdf`
   resumeUrl: undefined,
   links: {
-    // TODO: fill in your public profile URLs and contact email
-    github: undefined,
-    linkedin: undefined,
-    email: undefined,
+    github: 'https://github.com/GioRodriguez1',
+    linkedin: 'https://www.linkedin.com/in/giovanny-rodriguez123/',
+    email: 'giovannyrodriguez093@gmail.com',
   },
 }
