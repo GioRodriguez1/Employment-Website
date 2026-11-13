@@ -19,7 +19,8 @@ export const personal: PersonalInfo = {
     'Cloud Computing',
     'Automation',
   ],
-  // TODO: add public/resume.pdf, then set resumeUrl: '/resume.pdf'
+  // TODO: add public/resume.pdf, then set:
+  //   resumeUrl: `${import.meta.env.BASE_URL}resume.pdf`
   resumeUrl: undefined,
   links: {
     // TODO: fill in your public profile URLs and contact email

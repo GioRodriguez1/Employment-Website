@@ -10,21 +10,27 @@ import NotFound from '@/pages/NotFound'
 import Projects from '@/pages/Projects'
 import Skills from '@/pages/Skills'
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      element: <PageLayout />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: 'about', element: <About /> },
+        { path: 'experience', element: <Experience /> },
+        { path: 'projects', element: <Projects /> },
+        { path: 'coursework', element: <Coursework /> },
+        { path: 'skills', element: <Skills /> },
+        { path: 'contact', element: <Contact /> },
+        { path: '*', element: <NotFound /> },
+      ],
+    },
+  ],
   {
-    element: <PageLayout />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: 'about', element: <About /> },
-      { path: 'experience', element: <Experience /> },
-      { path: 'projects', element: <Projects /> },
-      { path: 'coursework', element: <Coursework /> },
-      { path: 'skills', element: <Skills /> },
-      { path: 'contact', element: <Contact /> },
-      { path: '*', element: <NotFound /> },
-    ],
+    // On GitHub Pages the site is served from /Employment-Website/ (see vite.config.ts).
+    basename: import.meta.env.BASE_URL,
   },
-])
+)
 
 export default function App() {
   return (
