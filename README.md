@@ -72,7 +72,7 @@ The application should be professional, responsive, accessible, and easy to navi
 
 ### Deployment
 
-The application will be deployed using **Vercel**.
+The application will be deployed using **GitHub Pages**.
 
 The initial version will be a frontend-only application.
 
@@ -977,7 +977,7 @@ An interactive portfolio that allows visitors to explore projects, coursework, a
 - [ ] Add Open Graph metadata
 - [ ] Test mobile layouts
 - [ ] Test navigation and interactions
-- [ ] Configure Vercel deployment
+- [ ] Configure GitHub Pages deployment
 - [ ] Configure SPA routing fallback
 - [ ] Deploy production application
 
@@ -1126,25 +1126,30 @@ These commands assume the project has been initialized with the standard Vite sc
 
 # 🌐 Deployment
 
-The application will be hosted using Vercel.
+The application is hosted on **GitHub Pages** at
+`https://giorodriguez1.github.io/Employment-Website/`.
 
 ## Deployment Process
 
-1. Push the repository to GitHub.
-2. Import the repository into Vercel.
-3. Select the Vite framework preset.
-4. Configure the build settings.
-5. Deploy the application.
-6. Verify all routes and assets work correctly.
+Deployment is automated by `.github/workflows/deploy.yml`:
 
-Expected build configuration:
+1. One-time setup: in the GitHub repository, go to **Settings → Pages** and set
+   **Source** to **GitHub Actions**.
+2. Push or merge to `main`. The workflow runs `npm ci` and `npm run build`, then
+   publishes the `dist` folder.
+3. Verify all routes and assets work correctly.
 
-```text
-Build Command: npm run build
-Output Directory: dist
-```
+The workflow can also be run manually from the **Actions** tab.
 
-For client-side routing, configure Vercel to serve the application entry point for application routes.
+## Notes
+
+- The site is served from the `/Employment-Website/` subpath. This is set by
+  `base` in `vite.config.ts`, and the router reads it through
+  `import.meta.env.BASE_URL`. If the repository is renamed, update `base` to match.
+- GitHub Pages has no SPA routing fallback, so the workflow copies `index.html`
+  to `404.html`. Direct visits to routes like `/projects` then load the app.
+- Files in `public/` (such as `resume.pdf`) must be referenced with the base
+  prefix, e.g. `` `${import.meta.env.BASE_URL}resume.pdf` ``.
 
 ---
 
